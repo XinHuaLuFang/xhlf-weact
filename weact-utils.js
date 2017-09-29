@@ -7,8 +7,8 @@ function isStateLessComponent(element) {
   return !isClass(element) && typeof element === 'function';
 }
 
-function handleClass(clazz) {
-  const component = new clazz();
+function handleClass(clazz, props) {
+  const component = new clazz(props);
   return component.render();
 }
 
