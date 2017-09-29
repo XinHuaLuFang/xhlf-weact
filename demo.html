@@ -6,21 +6,8 @@
 </head>
 <body>
 <div id="root"></div>
+<script src="./weact-utils.js"></script>
 <script src="./weact.js"></script>
-<script>
-  class Hello {
-    render() {
-      return Weact.createElement('div', null, 'Hello World');
-    }
-  }
-//  const Hello = function() {
-//    return Weact.createElement('div', null, 'Hello World');
-//  };
-  const helloWorld = Weact.createElement(Hello);
-  const helloWorld2 = Weact.createElement(Hello);
-  const ppxiaDiv = Weact.createElement('div', null, 'ppxia da doudou');
-  const Parent = Weact.createElement('div', null, helloWorld, helloWorld2, ppxiaDiv, 'doudou da ppxia');
-  WeactDOM.render(helloWorld, document.getElementById('root'));
-</script>
+<script src="./app.js"></script>
 </body>
 </html>

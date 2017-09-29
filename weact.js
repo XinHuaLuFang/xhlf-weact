@@ -1,28 +1,15 @@
 (() => {
-  function anElement(el, children) {
-    if (isClass(el)) {
-      const component = new el();
-      return component.render();
-    } else if (typeof el === 'function') {
-      return el();
+  function anElement(element, props,children) {
+    if (isClass(element)) {
+      handleClass(element);
+    } else if (isStateLessComponent(element)) {
+      return element(props);
     } else {
-      const elem = document.createElement(el);
-      for (let i = 0; i < children.length; i++) {
-        if (typeof children[i] === 'object') {
-          elem.appendChild(children[i]);
-        } else {
-          elem.innerHTML += children[i];
-        }
-      }
-      return elem;
+      return handleHtmlElement(element, children);
     }
   }
-  function createElement(el, props, ...children) {
-    return anElement(el, children);
-  }
-  function isClass(func) {
-    return typeof func === 'function'
-      && /^class\s/.test(Function.prototype.toString.call(func));
+  function createElement(element, props, ...children) {
+    return anElement(element, props, children);
   }
   window.Weact = {
     createElement
